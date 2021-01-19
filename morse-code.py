@@ -23,15 +23,14 @@ def main(n):
     print("input: '{}'".format(n))
     n_str = n.replace(' ', '')
     for s in list(n_str):
-        for key, value in Morse().MORSE_TABLES.items():
-            if s.isalpha():
-                s = s.upper()
-            if s == key:
-                if args.verbose:
-                    print("{0}:: {1}".format(s, value))
-                else:
-                    print("{}".format(value),end='')
-                    print(' ',end='')
+        if s.isalpha():
+            s = s.upper()
+        get_value = Morse().MORSE_TABLES.get(s)
+        if args.verbose:
+            print("{0}:: {1}".format(s, get_value))
+        else:
+            print("{}".format(get_value),end='')
+            print(' ',end='')
     print()
 
 def _All_View():
