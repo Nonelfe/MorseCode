@@ -11,7 +11,7 @@ if not path.exists('morse_tables.py'):
 parser = argparse.ArgumentParser()
 parser.add_argument('-i', '--input', help='input string')
 parser.add_argument('-a', '--all', action='store_true', help='all print')
-parser.add_argument('-v', '--verbose', action='store_true', help='explain what is being done')
+parser.add_argument('-d', '--detail', action='store_true', help='Detail deiplay of results')
 args = parser.parse_args()
 
 print("--*-- MorseCode --*--")
@@ -26,7 +26,7 @@ def main(n):
         if s.isalpha():
             s = s.upper()
         get_value = Morse().MORSE_TABLES.get(s)
-        if args.verbose:
+        if args.detail:
             print("{0}:: {1}".format(s, get_value))
         else:
             print("{}".format(get_value),end='')
