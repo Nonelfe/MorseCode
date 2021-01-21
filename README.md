@@ -82,11 +82,6 @@
   key:9, value:----･
   key:0, value:-----
   key:A, value:･-
-  key:B, value:-･･･
-  key:C, value:-･-･
-  key:D, value:-･･
-  key:E, value:･
-  key:F, value:･･-･
   
   -- 略 --
   
