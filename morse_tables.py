@@ -10,8 +10,9 @@ class Morse():
 
         def error_check(self, datas):
             result = ''
-            datas_list = datas.replace(' ', '')
-            for data in list(datas_list):
+            for data in list(datas):
+                if data == ' ':
+                    continue
                 if data.isalpha():
                     data = data.upper()
                 get_value = self.morse_tables.get(data, False)
@@ -115,7 +116,7 @@ class Morse():
                 'リ' : '--･',
                 'ヌ' : '････',
                 'ル' : '-･--･',
-                'オ' : '･---',
+                'ヲ' : '･---',
                 'ワ' : '-･-',
                 'カ' : '･-･･',
                 'ヨ' : '--',
@@ -128,7 +129,6 @@ class Morse():
                 'ラ' : '･･･',
                 'ム' : '-',
                 'ウ' : '･･-',
-                'イ' : '･-･･-',
                 'ヰ' : '･-･･-',
                 'ノ' : '･･--',
                 'オ' : '･-･･･',
