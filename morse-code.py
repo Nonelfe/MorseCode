@@ -13,6 +13,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('-i', '--input', help='input string')
 parser.add_argument('-a', '--all', action='store_true', help='all print')
 parser.add_argument('-d', '--detail', action='store_true', help='Detail deiplay of results')
+
 args = parser.parse_args()
 
 print("--*-- MorseCode --*--")
@@ -22,16 +23,13 @@ def main(n):
         return ()
 
     print("input: '{}'".format(n))
-    n_str = n.replace(' ', '')
-    for s in list(n_str):
-        if s.isalpha():
-            s = s.upper()
-        get_value = Morse().MORSE_TABLES.get(s)
-        if args.detail:
-            print("{0}:: {1}".format(s, get_value))
-        else:
-            print("{}".format(get_value),end='')
-            print(' ',end='')
+    result = Morse().encode(n)
+    if args.detail:
+        view = dict(zip(list(n.replace(' ', '')), result.split()))
+        for k, v in view.items():
+            print("{0}:: {1}".format(k, v))
+    else:
+        print("{}".format(result))
     print()
 
 def _All_View():

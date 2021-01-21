@@ -14,12 +14,41 @@ class Morse():
             for data in list(datas_list):
                 if data.isalpha():
                     data = data.upper()
-                if not data in self.morse_tables.keys():
-                    result = result + data
+                get_value = self.morse_tables.get(data, False)
+                if not get_value:
+                    result += data
             if not result == '':
                 print("Input ERROR : '{}'".format(result))
                 return False
             return True
+
+        def encode(self, datas):
+            result = ''
+            datas_list = datas.replace(' ', '')
+            for data in list(datas_list):
+                if data.isalpha():
+                    data = data.upper()
+                result += self.morse_tables.get(data) + ' '
+            return result
+
+        def decode(self, datas, wabun=False):
+            from string import ascii_uppercase
+            from string import digits
+
+            alpha = ascii_uppercase
+            alphanum = alpha + digits
+            result = ''
+            data_list = datas.split()
+            for data in data_list:
+                for key, value in self.morse_tables.items():
+                    if data == value:
+                        if wabun:
+                            if not key in alpha:
+                                result += key
+                        else:
+                            if key in alphanum:
+                                result += key
+            return result
 
         MORSE_TABLES = {
                 '1' : '･----',
@@ -130,11 +159,18 @@ class Morse():
                 '、' : '･-･-･-',
                 '（' : '-･--･-',
                 '）' : '･-･･-･',
-                }
+        }
 
 def main(s):
-    err_check = Morse()
-    print(err_check.error_check(s))
+    morse = Morse()
+    result = morse.error_check(s)
+    print("error check: {}".format(result))
+    if not result:
+        exit()
+    d = morse.encode(s)
+    print("encode: {}".format(d))
+    print("decode: {}".format(morse.decode(d)))
+    print("decode wabun: {}".format(morse.decode(d, wabun=True)))
 
 if __name__ == '__main__':
     import sys
