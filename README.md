@@ -16,14 +16,14 @@
 
   *text to convert*
   ```
-  $python3 morse-code.py -i 'text to convert'
+  $morse-code.py -i 'text to convert'
   --*-- MorseCode --*--
   input: 'text to convert'
   - ･ -･･- - - --- -･-･ --- -･ ･･･- ･ ･-･ -
   ```
   *Detail view*
   ```
-  $python3 morse-code.py -d -i 'detail view'
+  $morse-code.py -d -i 'detail view'
   --*-- MorseCode --*--
   input: 'detail view'
   D:: -･･
@@ -39,7 +39,7 @@
   ```
   *tools help*
   ```
-  $python3 morse-code.py -h
+  $morse-code.py -h
   usage: morse-code.py [-h] [-i INPUT] [-a] [-d]
 
   optional arguments:
@@ -51,7 +51,7 @@
   ```
   *Morse tables All view*
   ```
-  $python3 morse-code.py -a
+  $morse-code.py -a
   --*-- MorseCode --*--
   --All view mode--
   key:1, value:･----
